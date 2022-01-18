@@ -1,5 +1,5 @@
 
-/* mobile-first */
+/* MOBILE */
 
 #artists h4 {
   text-transform: uppercase;
@@ -35,14 +35,31 @@
   grid-row: 1/6; /* has the image span over all 5 of our rows and have the content stack together */
 }
 
-/* tablet & desktop */
+/* TABLET */
 
 @media (min-width: 650px) {
   .articlewrap {
     display: grid; /* overrides earlier declaration for display: flex */
+    grid-template-columns: repeat(2, minmax(10px, 1fr)); /* minmax ensures that the grid cells don't get too small */
   }
 }
 
+/* DESKTOP */
+@media (min-width: 1000px) {
+  .articlewrap {
+    grid-template-columns: repeat(4, minmax(10px, 1fr)); /* tells grid to switch to 4 columns, instead */
+  }
+  .articlewrap article {
+    grid-template-columns: minmax(100px, 1fr); /* this occurs inside of the article. w/o minmax the photos disappear except for 1st */
+    grid-template-rows: repeat(5, auto); /* rows need to be specified, again */
+    gap: 0 1em;
+  }
+  .articlewrap article * { /* this rearranges all elements to get image back in same place as text */
+    grid-column: 1/2;
+  }
+
+  /* the elements don't line up exactly for desktop and they didn't for the instructor's code...maybe due to images not being the same size OR they are not scaling the same for some reason. */
+}
 
 /* default styling, no changes needed here */
 
@@ -62,6 +79,7 @@ body {
   font-family: Arial, sans-serif;
   background: rgb(213,230,124);
   background: linear-gradient(324deg, rgba(213,230,124,1) 0%, rgba(80,255,233,1) 35%, rgba(0,212,255,1) 100%);
+  background-attachment: fixed; /* makes bg gradient fixed throughout resizing */
 }
 img {
   width: 100%;
