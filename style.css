@@ -1,3 +1,49 @@
+
+/* mobile-first */
+
+#artists h4 {
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+#artists h3 {
+  margin-top: 0.3em;
+}
+
+.articlewrap {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1rem;
+}
+
+.articlewrap article {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* creates a default of 2 columns */
+  grid-template-rows: repeat(5, auto); /*by default, grid is going to assign each element inside of a card / article its own row.*/
+  gap: 0 1rem; /* gives us gap between the image and the text */
+}
+
+.articlewrap article * {
+  grid-column: 2/3; /* states we want everything in the second column */
+  margin-top: 0;
+}
+
+.articlewrap article img {
+  grid-column: 1/2; /* puts images on left-hand side. */
+  grid-row: 1/6; /* has the image span over all 5 of our rows and have the content stack together */
+}
+
+/* tablet & desktop */
+
+@media (min-width: 650px) {
+  .articlewrap {
+    display: grid; /* overrides earlier declaration for display: flex */
+  }
+}
+
+
 /* default styling, no changes needed here */
 
 /* set the layout to border box model */
